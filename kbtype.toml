@@ -1,0 +1,35 @@
+# Slip-box: a KB type for AutoDoc (ADR 1792349867). Format 1.
+format = 1
+name = "slipbox.kb"
+title = "Slip-box"
+description = "Ahrens's slip-box: one flat box of ID-named permanent notes ordered only by links, with references and project drafts beside it."
+autodoc = ">=0.2.0"
+
+[workspace]
+include = ["**/*.md"]
+embedding_policy = "always"
+schema = "_schema/frontmatter.yaml"
+
+[[folder]]
+path = "inbox"
+purpose = "fleeting notes, emptied often"
+
+[[folder]]
+path = "slipbox"
+purpose = "every permanent note, one flat folder, named by ID"
+
+[[folder]]
+path = "references"
+purpose = "one note per source, with its bibliographic details"
+
+[[folder]]
+path = "projects"
+purpose = "drafts that draw on the slip-box, one folder per project"
+
+[[folder]]
+path = "_templates"
+purpose = "a template per note type"
+
+[[folder]]
+path = "_schema"
+purpose = "the frontmatter types this KB validates"

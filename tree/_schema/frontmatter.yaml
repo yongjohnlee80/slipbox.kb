@@ -1,0 +1,40 @@
+# The KB's frontmatter schema, from the slipbox.kb KB type. It is this KB's own: change it to fit.
+version: 2
+strict: false
+discriminator: type
+common:
+  type: {type: string, required: true, enum: [capture, slip, reference, draft, about, kb]}
+  status: {type: string, required: true}
+  created: {type: date, required: true}
+  tags: {type: list}
+  abstract: {type: string}
+  title: {type: string}
+  updated: {type: date}
+  sources: {type: list}
+  related: {type: list}
+types:
+  capture:
+    status: {type: string, enum: [open, processed]}
+  slip:
+    status: {type: string, enum: [draft, final]}
+    id: {type: string, required: true}
+    kind: {type: string, enum: [note, index]}
+  reference:
+    status: {type: string, enum: [active, done]}
+    citekey: {type: string, required: true}
+    author: {type: string}
+    year: {type: integer}
+    url: {type: string}
+  draft:
+    status: {type: string, enum: [active, done]}
+    project: {type: string}
+  about:
+    status: {type: string, enum: [active]}
+    kb_type: {type: string}
+    kb_type_url: {type: string}
+    kb_type_commit: {type: string}
+  kb:
+    status: {type: string, enum: [active]}
+    kind: {type: string, enum: [agents, rules, operations, readme, pointer]}
+    autodoc_version: {type: string}
+    revision: {type: integer}
